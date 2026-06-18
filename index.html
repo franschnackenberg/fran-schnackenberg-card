@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fran Schnackenberg | Digital Business Card</title>
+  <meta name="description" content="Digital business card for Fran Schnackenberg, Marketing & Communications Manager at KPMG New Zealand." />
+  <style>
+    :root {
+      --bg: #071018;
+      --bg2: #0b1720;
+      --card: rgba(10, 18, 27, 0.88);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f4f8fb;
+      --muted: #a8bac8;
+      --line: rgba(255, 255, 255, 0.08);
+      --btn: rgba(255, 255, 255, 0.04);
+      --btn-hover: rgba(255, 255, 255, 0.08);
+      --blue: #005eb8;
+      --teal: #00a3a1;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px circle at 12% 8%, rgba(0, 163, 161, 0.14), transparent 38%),
+        radial-gradient(900px circle at 88% 92%, rgba(0, 94, 184, 0.18), transparent 34%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 32px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .banner {
+      position: relative;
+      padding: 28px 24px 22px;
+      background:
+        linear-gradient(135deg, rgba(0, 94, 184, 1) 0%, rgba(0, 126, 165, 1) 45%, rgba(0, 163, 161, 1) 100%);
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+
+    .name {
+      position: relative;
+      margin: 0 0 6px;
+      font-size: clamp(1.8rem, 4.5vw, 2.2rem);
+      line-height: 1.05;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+    }
+
+    .role {
+      position: relative;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .meta {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .content {
+      padding: 24px;
+    }
+
+    .headline {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      padding: 15px 16px;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--btn);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      background: var(--btn-hover);
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      outline: none;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .label {
+      display: block;
+      font-size: 0.78rem;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #9cb3c2;
+      margin-bottom: 4px;
+    }
+
+    .value {
+      display: block;
+      font-size: 0.98rem;
+      line-height: 1.35;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .small {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .qrwrap {
+      margin: 22px 0 14px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .qrimg {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 10px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
+    }
+
+    .footer {
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .note {
+      margin: 12px 0 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 420px) {
+      .banner,
+      .content { padding-left: 20px; padding-right: 20px; }
+      .btn { padding: 14px; }
+      .value { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Digital business card">
+    <header class="banner">
+      <h1 class="name">Fran Schnackenberg</h1>
+      <p class="role">Marketing &amp; Communications Manager · Brand</p>
+      <div class="meta">
+        <span class="pill">Auckland</span>
+      </div>
+    </header>
+
+    <section class="content">
+      <p class="headline">Working with partners and teams to turn their ideas and expertise into clear, engaging campaigns, content, and client experiences that build our KPMG brand and drive growth.</p>
+
+      <div class="grid" aria-label="Contact actions">
+        <a class="btn" href="mailto:fschnackenberg@kpmg.co.nz" aria-label="Email Fran Schnackenberg">
+          <span class="left">
+            <span>
+              <span class="label">Email</span>
+              <span class="value">fschnackenberg@kpmg.co.nz</span>
+            </span>
+          </span>
+        </a>
+
+        <a class="btn" href="tel:+642108183551" aria-label="Call Fran Schnackenberg">
+          <span class="left">
+            <span>
+              <span class="label">Mobile</span>
+              <span class="value">021 0818 3551</span>
+            </span>
+          </span>
+        </a>
+
+        <a class="btn" href="https://www.linkedin.com/in/franschnack" target="_blank" rel="noopener noreferrer" aria-label="View Fran Schnackenberg on LinkedIn">
+          <span class="left">
+            <span>
+              <span class="label">LinkedIn</span>
+              <span class="value">www.linkedin.com/in/franschnack</span>
+            </span>
+          </span>
+        </a>
+
+        <a class="btn" href="first-last.vcf" aria-label="Save contact card">
+          <span class="left">
+            <span>
+              <span class="label">Save Contact</span>
+              <span class="value">Save contact (.vcf)</span>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <div class="qrwrap">
+        <img class="qrimg" src="qr.png" alt="QR code to open this digital business card" />
+        <div class="row" aria-hidden="true">
+          <span class="small">Scan to open this card on your phone</span>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p class="note">Tip: Tap ‘Save contact’ to add my details, or bookmark this page for easy access.</p>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
